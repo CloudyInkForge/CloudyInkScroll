@@ -1,0 +1,43 @@
+/* 工具栏样式 */
+.toolbar {
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    border-radius: 10px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    padding: 10px; /* 内边距 */
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: space-around; /* 水平均匀分布按钮 */
+    align-items: center; /* 垂直居中对齐 */
+    margin: 0 auto; /* 水平居中 */
+    position: fixed; /* 固定定位 */
+    bottom: 0px; /* 距离底部10px */
+    left: 0; /* 左侧对齐 */
+    right: 0; /* 右侧对齐 */
+    width: fit-content; /* 宽度适应内容 */
+    max-width: 100%; /* 最大宽度为100% */
+    margin: 0 auto; /* 水平居中 */
+}
+
+/* 按钮样式 */
+.toolbar .btn {
+    background-color: transparent; /* 透明背景 */
+    border: none; /* 无边框 */
+    color: #333; /* 文本颜色 */
+    padding: 10px 20px; /* 增加内边距，使按钮更大 */
+    border-radius: 5px; /* 圆角 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+    transition: background-color 0.3s, color 0.3s; /* 过渡效果 */
+    font-size: 16px; /* 增加字体大小 */
+}
+
+/* 按钮悬停效果 */
+.toolbar .btn:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* 浅灰色背景 */
+    color: #3498db; /* 亮蓝色文本颜色 */
+}
+
+/* 按钮激活效果 */
+.toolbar .btn:active {
+    background-color: rgba(255, 255, 255, 0.6); /* 更浅的灰色背景 */
+    color: #2980b9; /* 更深的蓝色文本颜色 */
+}

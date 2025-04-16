@@ -1,0 +1,41 @@
+.topbar {
+    position: absolute;
+    top: 0%;
+    left: 15%;
+    width: 75%;
+    height: 17%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 100%; /* 根据需要调整图标大小 */
+    height: 100%; /* 根据需要调整图标大小 */
+    margin: 0 5px; /* 图标之间的间距 */
+}
+
+.arrow {
+    width: 8%; /* 根据需要调整箭头大小 */
+    height: 8%; /* 根据需要调整箭头大小 */
+    margin: 0 5px; /* 箭头之间的间距 */
+}
+
+.label {
+    font-size: 0.8em;
+    color: #555;
+    margin-top: -8%;
+    text-align: center; /* 文字居中 */
+}
+
+.illustration-credit {
+    position: absolute;
+    bottom: 0;
+    right: 8%;
+    color: #88888861; /* 浅灰色 */
+    font-size: 0.8em; /* 小字体 */
+    margin: 3px; /* 可选：添加一些间距 */
+}

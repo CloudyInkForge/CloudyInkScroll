@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高高记吧</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/mdview.css">
+    <link rel="stylesheet" href="./styles/sidebar.css">
+    <link rel="stylesheet" href="./styles/topbar.css">
+    <link rel="stylesheet" href="./styles/rightbar.css">
+    <link rel="stylesheet" href="./styles/toolbar.css">
+    <!-- 引入 jsPDF 库 -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+    <!-- 引入 html2canvas 库 -->
+    <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
+    <!-- 引入 FileSaver.js 库 -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script> -->
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <div class="input-block" contenteditable="true" id="inputText"></div>
+    <div class="material-block" id="materialText" style="display: none;"></div> <!-- 新增素材层 -->
+    <div class="background-block" id="backgroundLayer" style="display: none;"></div> <!-- 新增背景层 -->
+    <div id="content-container"></div> <!-- 添加内容容器 -->
+    <input type="file" id="backgroundFileInput" accept="image/*,video/*" style="display: none;">
+    <script src="./scripts/core/mmd.js"></script>
+    <script src="./scripts/core/mdview.js"></script>
+    <script src="./scripts/core/disk/sidebar_load.js"></script>
+    <script src="./scripts/file/import.js"></script>
+    <script src="./scripts/file/openFile.js"></script>
+    <script src="./scripts/action/rightbar.js"></script>
+    <script src="./scripts/file/exportMDFile.js"></script>
+    <script src="./scripts/file/saveFile.js"></script>
+    <script src="./scripts/action/tab.js"></script>
+    <script src="./scripts/experience/background.js"></script>
+    <script>
+        // 动态加载sidebar.html
+        fetch('./website/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+                // 确保在内容加载后初始化
+                if (typeof setupFormatHover === 'function') {
+                    setupFormatHover();
+                }
+            });
+
+        // 动态加载topbar.html
+        fetch('./website/topbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.innerHTML += data;
+            });
+            
+        // 动态加载rightbar.html
+        fetch('./website/rightbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.innerHTML += data;
+            });
+    </script>
+</body>
+</html>
+<script>
+    // 添加DOMContentLoaded监听
+    document.addEventListener('DOMContentLoaded', function() {
+        // 确保输入框存在后再初始化
+        const inputText = document.getElementById('inputText');
+        if (inputText && typeof setupFormatHover === 'function') {
+            setupFormatHover();
+        }
+    });
+</script>

@@ -1,0 +1,128 @@
+/* 侧边栏容器样式 */
+.sidebar {
+    width: 15%; /* 设置侧边栏的宽度为视口宽度的15% */
+    height: 100vh; /* 设置侧边栏的高度为视口高度的100% */
+    position: fixed; /* 固定定位，使侧边栏固定在页面左侧 */
+    top: 0; /* 侧边栏顶部与页面顶部对齐 */
+    left: 0; /* 侧边栏左侧与页面左侧对齐 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景，透明度为80% */
+    backdrop-filter: blur(10px); /* 背景模糊效果，模糊半径为10px */
+    padding: 20px; /* 内边距为20px */
+    box-sizing: border-box; /* 确保内边距和边框包含在元素的总宽度和高度内 */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 右侧阴影效果，模拟立体感 */
+    display: flex; /* 使用弹性布局 */
+    flex-direction: column; /* 子元素垂直排列 */
+}
+
+/* 侧边栏内的无序列表样式 */
+.sidebar ul {
+    list-style-type: none; /* 移除默认的列表符号 */
+    padding: 0; /* 移除内边距 */
+    margin: 0; /* 移除外边距 */
+}
+
+/* 列表项样式 */
+.sidebar li {
+    margin-bottom: 10px; /* 每个列表项底部留出10px的间距 */
+}
+
+/* 选择层样式 */
+.select-layer {
+    height: 8%; /* 设置选择层的高度为侧边栏高度的8% */
+    display: flex; /* 使用弹性布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 底部1px的浅灰色分隔线 */
+    position: relative; /* 使用相对定位 */
+    width: 100%; /* 设置宽度为100% */
+}
+
+/* 按钮样式 */
+.select-button {
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+    color: #3498db; /* 亮蓝色文字 */
+    border: 1px solid #3498db; /* 亮蓝色边框 */
+    width: 40%; /* 设置按钮宽度 */
+    height: 80%; /* 设置按钮高度 */
+    padding: 0; /* 移除内边距 */
+    border-radius: 5px; /* 圆角半径为5px */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* 背景颜色、文字颜色和边框颜色变化时有0.3秒的过渡效果 */
+    position: absolute; /* 使用绝对定位 */
+    top: 50%; /* 垂直居中 */
+    left: 75%; /* 水平距离右侧75% */
+    transform: translate(-50%, -50%); /* 调整按钮的位置，使其在父元素中居中 */
+    display: flex; /* 使用弹性布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+}
+
+/* 按钮悬停样式 */
+.select-button:hover {
+    background-color: #3498db; /* 悬停时的亮蓝色背景 */
+    color: white; /* 悬停时的白色文字 */
+    border-color: #2980b9; /* 悬停时的深蓝色边框 */
+}
+
+
+
+
+/* 控制层样式 */
+.control-layer {
+    height: 5%; /* 设置控制层的高度为侧边栏高度的5% */
+    display: flex; /* 使用弹性布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: space-around; /* 子元素之间均匀分布 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 底部1px的浅灰色分隔线 */
+}
+
+/* 显示框样式 */
+.info-box {
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+    color: #3498db; /* 亮蓝色文字 */
+    border: 1px solid #3498db; /* 亮蓝色边框 */
+    padding: 1px; /* 内边距 */
+    border-radius: 5px; /* 圆角半径为5px */
+    margin-top: 1px; /* 上外边距 */
+    width: 100%; /* 宽度填充父元素 */
+    box-sizing: border-box; /* 确保内边距和边框包含在元素的总宽度和高度内 */
+    font-size: 16px; /* 字体大小 */
+}
+
+
+/* 显示层样式 */
+.display-layer {
+    height: 87%; /* 设置显示层的高度为侧边栏高度的87% */
+    overflow-y: auto; /* 如果内容超出高度，允许纵向滚动 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+}
+
+
+
+/* 媒体查询 */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 20%; /* 在较小屏幕上增加侧边栏宽度 */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 25%; /* 在更小屏幕上进一步增加侧边栏宽度 */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%; /* 在移动设备上使侧边栏宽度占满整个屏幕 */
+        height: auto; /* 高度自适应内容 */
+        position: relative; /* 改为相对定位 */
+        top: auto; /* 重置顶部位置 */
+        left: auto; /* 重置左侧位置 */
+    }
+}
