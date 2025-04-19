@@ -1,42 +1,105 @@
-# CloudInkNote
+# Qingyun Mojian - Lightweight Frontend Note-Taking Tool
 
-## Introduction
-A front-end note-taking web application (current version v0.1.1) developed with JavaScript + HTML + CSS, supporting rich text editing, multi-layer content management, and responsive layout. Built with extensive AI-assisted coding, core functionalities are implemented but remain in a semi-complete state.
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 
-**Key Features**:
-- 📌 Customized Markdown parsing engine based on `mmd.js`
-- 🎨 Three-column frosted glass interface design (15% sidebar / 75% editor / 10% right panel)
-- ✨ Layered editing system (Input Layer / Material Layer / Background Layer)
-- 🤖 Dynamic interactive buttons and double-click Tab switching
+## ✨ Key Features
+
+### Core Features
+- **Minimalist Design**: Immersive distraction-free writing interface
+- **Multi-Format Support**: Native Markdown/DOC/PDF document interaction (NC)
+- **Smart Material Library**: Dynamic tile panel with AI-powered recommendations (NC)
+- **Deep OCR Integration**: Image/PDF content slicing with format-aware text recognition (NC)
+- **Version Vault**: Multi-layer backup & time-machine style version control
+
+### Advanced Extensions
+- **Rich Media Embedding**: Seamless mindmaps/3D models/video clips integration (NC)
+- **Self-hosted Sync**: Private cloud knowledge base (NC)
+- **LaTeX Rendering**: Real-time math formula preview (NC)
+
+## 🚀 Quick Start
+
+### Local Development
+```bash
+# Using Python built-in server
+python3 -m http.server 8000
+# Or via Node.js
+npx live-server --port=8000
+```
+
+### Production Deployment
+```bash
+# Recommended Nginx configuration
+server {
+    listen 80;
+    server_name note.yourdomain.com;
+    root /path/to/qingyunmojian;
+    index index.html;
+}
+```
+
+## 📂 Project Structure
+```
+├── index.html                  # Main entry point
+├── LICENSE                     # MIT License
+├── README.md                   # Documentation
+├── scripts/
+│   ├── action/
+│   │   └── rightbar.js         # Right sidebar logic <mcsymbol...>
+│   ├── core/
+│   │   └── mdview.js          # Markdown editor core
+│   ├── file/
+│   │   ├── openFile.js        # File opener (.mdh/.html)
+│   │   └── saveFile.js        # Styled HTML exporter
+├── styles/
+│   ├── mdview.css             # Markdown styling
+│   ├── rightbar.css           # Sidebar styles
+│   ├── sidebar.css            # Side navigation
+│   ├── style.css              # Base styles
+│   └── toolbar.css            # Toolbar layout
+├── website/
+│   └── rightbar/
+│       ├── experience.html    # UI customization
+│       ├── file.html          # File operations
+│       ├── materials.html     # Template management
+│       └── rightbar.html      # Main sidebar UI
+```
+
+## 🛠️ Development Guide
+
+### Requirements
+- Modern browsers (Chrome 105+/Firefox 101+)
+- Node.js 18+ (Optional for advanced features)
+
+### Contribution Areas
+1. **UI/UX Enhancement**: Complete unfinished features in `rightbar.html`
+2. **AI Integration**: Expand AI assistant capabilities
+3. **Mobile Adaptation**: Optimize media queries
+
+👉 Check [ROADMAP.md](ROADMAP.md) for priority tasks
+
+## ⚠️ Important Notes
+
+### Technical Transparency
+- Developed with AI assistance (including DeepSeek models)
+- Core AI features require custom API endpoints
+
+### Current Limitations
+- Cloud sync module pending implementation
+- Mobile touch interaction needs optimization
+- Video backgrounds may impact performance
+
+## 🌱 Developer Story
+> "As a 14-year-old programming enthusiast, this marks my first complete frontend project. From learning JavaScript fundamentals to implementing OCR integration, this journey has been challenging yet rewarding. Looking forward to growing with the developer community!"  
+> — Project Founder @CloudyInkForge
+
+## 📜 License
+Released under **[MIT License](LICENSE)**:
+- Free for commercial/private use
+- Modification and redistribution permitted
+- No warranty provided
+
+*(Retain original copyright notice and license file)*
 
 ---
 
-## Software Architecture
-### Core Modules
-1. **Parsing Engine**  
-   - Customized `mmd.js` for basic Markdown syntax parsing  
-   - Supports bold/italic/headers/links and other rich text formats  
-2. **Editing System**  
-   - Multi-layer Tab switching (single-click for Input/Material layers, double-click for Background layer)  
-   - Basic template selection and file loading mechanism  
-3. **Interface System**  
-   - Responsive layout for various screen sizes  
-   - CSS effects (frosted glass sidebar, button animations)  
-
-### Known Limitations
-- ❌ No support for nested Markdown syntax or tables  
-- ❌ Background file upload triggers dialog only (no processing logic)  
-- ❌ Heading level adjustment lacks boundary checks  
-
----
-
-## Installation Guide
-### Dependencies
-```plaintext
-Core dependencies:
-- mmd.js v0.5 (custom modified)
-
-Optional dependencies (currently commented):
-- jspdf@2.5.1
-- html2canvas@1.4.1
-- FileSaver.js@2.0.5
+[📬 Submit Feature Requests](mailto:hzy02160312@outlook.com)
