@@ -71,33 +71,7 @@ body {
     overflow-y: auto; /* 添加垂直滚动条 */
 }
 
-.material-block {
-    width: 75%; /* 容器宽度 */
-    height: 75%; /* 容器高度 */
-    padding: 20px; /* 内边距 */
-    box-sizing: border-box; /* 确保内边距包含在宽度和高度内 */
-    margin: 20% 5% 15% 10%; /* 上下边距 10%，左右边距 5% */
-    border-radius: 10px; /* 圆角 */
-}
 
-.material-block {
-    background-color: #ffffff; /* 可以根据需要调整背景颜色 */
-}
-
-.background-block {
-    width: 75%; /* 容器宽度 */
-    height: 75%; /* 容器高度 */
-    padding: 20px; /* 内边距 */
-    box-sizing: border-box; /* 确保内边距包含在宽度和高度内 */
-    margin: 20% 5% 15% 10%; /* 上下边距 10%，左右边距 5% */
-    border-radius: 10px; /* 圆角 */
-}
-
-.background-block {
-    background-size: cover; /* 使背景图片或视频覆盖整个背景层 */
-    background-position: center;
-    background-repeat: no-repeat;
-}
 /* 
 响应式媒体查询：
 - 当屏幕宽度小于等于 768px 时，调整 .input-block 的宽度和高度。

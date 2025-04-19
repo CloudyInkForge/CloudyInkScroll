@@ -20,8 +20,6 @@
 <body>
     <div id="sidebar-container"></div>
     <div class="input-block" contenteditable="true" id="inputText"></div>
-    <div class="material-block" id="materialText" style="display: none;"></div> <!-- 新增素材层 -->
-    <div class="background-block" id="backgroundLayer" style="display: none;"></div> <!-- 新增背景层 -->
     <div id="content-container"></div> <!-- 添加内容容器 -->
     <input type="file" id="backgroundFileInput" accept="image/*,video/*" style="display: none;">
     <script src="./scripts/core/mdview.js"></script>
@@ -29,7 +27,6 @@
     <script src="./scripts/action/rightbar.js"></script>
     <script src="./scripts/file/saveFile.js"></script>
     <script src="./scripts/action/tab.js"></script>
-    <script src="./scripts/experience/background.js"></script> <!-- 无法运行 -->
     <script>
         // 动态加载sidebar.html
         fetch('./website/sidebar.html')
