@@ -93,3 +93,75 @@ body {
         height: 40%; /* 容器高度 */
     }
 }
+/* 在 style.css 文件末尾添加 */
+@media only screen 
+    and (max-device-width: 430px) /* iPhone 15 竖屏宽度 */
+    and (-webkit-min-device-pixel-ratio: 3) { /* 视网膜屏幕 */
+    
+    .input-block {
+        width: 98%;
+        height: 50vh;
+        margin: 25% 1% 15% 1%;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        backdrop-filter: blur(20px);
+        padding: 10px;
+    }
+
+    .rightbar {
+        width: 25%;
+        top: 22%;
+        padding: 5px;
+    }
+
+    .toolbar {
+        bottom: 5px;
+        padding: 5px;
+        flex-wrap: wrap;
+    }
+
+    .toolbar .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+        margin: 2px;
+    }
+
+    .topbar {
+        left: 5%;
+        width: 90%;
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .label {
+        font-size: 0.6em;
+        margin-top: -12%;
+    }
+}
+
+/* 横屏适配 */
+@media only screen 
+    and (max-device-width: 932px) /* iPhone 15 横屏宽度 */
+    and (orientation: landscape) {
+    
+    .input-block {
+        height: 70vh;
+        margin: 5% 1%;
+    }
+
+    .sidebar {
+        height: auto;
+        position: relative;
+    }
+
+    .rightbar {
+        height: 85%;
+        top: 12%;
+    }
+}
