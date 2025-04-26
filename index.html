@@ -10,17 +10,11 @@
     <link rel="stylesheet" href="./styles/topbar.css">
     <link rel="stylesheet" href="./styles/rightbar.css">
     <link rel="stylesheet" href="./styles/toolbar.css">
-    <!-- 引入 jsPDF 库 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
-    <!-- 引入 html2canvas 库 -->
-    <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
-    <!-- 引入 FileSaver.js 库 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script> -->
 </head>
 <body>
     <div id="sidebar-container"></div>
     <div class="input-block" contenteditable="true" id="inputText"></div>
-    <div id="content-container"></div> <!-- 添加内容容器 -->
+    <div id="content-container"></div>
     <input type="file" id="backgroundFileInput" accept="image/*,video/*" style="display: none;">
     <script src="./scripts/core/mdview.js"></script>
     <script src="./scripts/file/openFile.js"></script>
@@ -33,10 +27,6 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('sidebar-container').innerHTML = data;
-                // 确保在内容加载后初始化
-                if (typeof setupFormatHover === 'function') {
-                    setupFormatHover();
-                }
             });
 
         // 动态加载topbar.html
@@ -55,13 +45,3 @@
     </script>
 </body>
 </html>
-<script>
-    // 添加DOMContentLoaded监听
-    document.addEventListener('DOMContentLoaded', function() {
-        // 确保输入框存在后再初始化
-        const inputText = document.getElementById('inputText');
-        if (inputText && typeof setupFormatHover === 'function') {
-            setupFormatHover();
-        }
-    });
-</script>

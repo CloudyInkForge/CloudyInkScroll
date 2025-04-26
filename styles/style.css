@@ -1,102 +1,79 @@
 /* ./styles/style.css */
-/* Minimalist Bright Dotted-Line Interface CSS on White Frosted Glass Background */
+/* 已移除 .debug-bar 和 .path-info 相关样式 */
 
-/* 
-body 样式：
-- 设置页面背景颜色为白色，字体为 Arial 或无衬线字体。
-- 使用 Flexbox 布局使内容居中对齐，并占据整个视口高度。
-- 添加半透明白色背景和模糊效果，营造磨砂玻璃效果。
-*/
 body {
-    background-color: white; /* 页面背景颜色 */
-    font-family: Arial, sans-serif; /* 字体设置 */
-    margin: 0; /* 移除默认外边距 */
-    padding: 0; /* 移除默认内边距 */
-    display: flex; /* 使用 Flexbox 布局 */
-    justify-content: center; /* 水平居中对齐 */
-    align-items: center; /* 垂直居中对齐 */
-    height: 100vh; /* 占据整个视口高度 */
-    background: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
-    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    background-color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
 }
 
-/* 
-.dotted-line 样式：
-- 创建一个虚线图案，用于分隔不同部分的内容。
-- 设置虚线的高度、宽度和间距。
-*/
 .dotted-line {
-    border: 2px dashed #ddd; /* 2px 灰色虚线边框 */
-    height: 2px; /* 虚线高度 */
-    width: 200px; /* 虚线宽度 */
-    margin: 20px 0; /* 上下外边距 */
+    border: 2px dashed #ddd;
+    height: 2px;
+    width: 200px;
+    margin: 20px 0;
 }
 
-/* 
-.dot 样式：
-- 创建一个圆形点图案，用于装饰或标记。
-- 设置点的大小、颜色和圆角。
-*/
 .dot {
-    height: 10px; /* 圆点高度 */
-    width: 10px; /* 圆点宽度 */
-    background-color: #bbb; /* 圆点颜色 */
-    border-radius: 50%; /* 圆角，使其成为圆形 */
-    display: inline-block; /* 行内块元素 */
-    margin: 5px; /* 外边距 */
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
 }
 
-/* 
-.accent 样式：
-- 定义亮色强调样式，用于突出显示文本或其他元素。
-*/
 .accent {
-    color: #3498db; /* 亮蓝色文本颜色 */
+    color: #3498db;
 }
 
-/* 
-.input-block 样式：
-- 创建一个输入块容器，用于放置表单或其他交互元素。
-- 设置容器的宽度、高度、背景颜色、圆角、阴影和内边距。
-*/
 .input-block {
-    width: 75%; /* 容器宽度 */
-    height: 75%; /* 容器高度 */
-    background-color: #f4f2efd7; /* 白色背景 */
-    border-radius: 10px; /* 圆角 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-    padding: 20px; /* 内边距 */
-    box-sizing: border-box; /* 确保内边距包含在宽度和高度内 */
-    margin: 20% 5% 15% 10%; /* 上下边距 10%，左右边距 5% */
-    overflow-y: auto; /* 添加垂直滚动条 */
+    width: 75%;
+    height: 75%;
+    background-color: #f4f2efd7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 20% 5% 15% 10%;
+    overflow-y: auto;
 }
 
+.format-highlight {
+    animation: format-pulse 1.2s ease-out;
+    background: rgba(100, 200, 255, 0.15);
+}
 
-/* 
-响应式媒体查询：
-- 当屏幕宽度小于等于 768px 时，调整 .input-block 的宽度和高度。
-*/
+@keyframes format-pulse {
+    0% { background: rgba(100, 200, 255, 0.3); }
+    100% { background: rgba(100, 200, 255, 0.15); }
+}
+
 @media (max-width: 768px) {
     .input-block {
-        width: 90%; /* 容器宽度 */
-        height: 50%; /* 容器高度 */
+        width: 90%;
+        height: 50%;
     }
 }
 
-/* 
-响应式媒体查询：
-- 当屏幕宽度小于等于 480px 时，进一步调整 .input-block 的宽度和高度。
-*/
 @media (max-width: 480px) {
     .input-block {
-        width: 95%; /* 容器宽度 */
-        height: 40%; /* 容器高度 */
+        width: 95%;
+        height: 40%;
     }
 }
-/* 在 style.css 文件末尾添加 */
+
+/* iPhone 15 竖屏适配 */
 @media only screen 
-    and (max-device-width: 430px) /* iPhone 15 竖屏宽度 */
-    and (-webkit-min-device-pixel-ratio: 3) { /* 视网膜屏幕 */
+    and (max-device-width: 430px)
+    and (-webkit-min-device-pixel-ratio: 3) {
     
     .input-block {
         width: 98%;
@@ -147,7 +124,7 @@ body {
 
 /* 横屏适配 */
 @media only screen 
-    and (max-device-width: 932px) /* iPhone 15 横屏宽度 */
+    and (max-device-width: 932px)
     and (orientation: landscape) {
     
     .input-block {
