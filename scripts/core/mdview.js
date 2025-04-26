@@ -227,5 +227,35 @@ function showFormatError(message) {
     }, 2700);
 }
 
-// 初始化（移除 setupFormatHover 调用）
-document.addEventListener('DOMContentLoaded', () => {});
+// 在DOMContentLoaded事件监听器中添加
+document.addEventListener('DOMContentLoaded', () => {
+    const inputBlock = document.getElementById('inputText');
+    const tooltip = document.getElementById('format-tooltip');
+
+    let hoverTimeout;
+    let currentHoverElement;
+
+    inputBlock.addEventListener('mousemove', (e) => {
+        const element = document.elementFromPoint(e.clientX, e.clientY);
+        if (!element || element === currentHoverElement) return;
+
+        currentHoverElement = element;
+        clearTimeout(hoverTimeout);
+        
+        hoverTimeout = setTimeout(() => {
+            const formatInfo = getFormatInfo(element);
+            if (formatInfo) {
+                tooltip.style.left = `${e.pageX + 12}px`;
+                tooltip.style.top = `${e.pageY + 12}px`;
+                tooltip.textContent = formatInfo;
+                tooltip.style.opacity = '1';
+            }
+        }, 100);
+    });
+
+    inputBlock.addEventListener('mouseout', () => {
+        clearTimeout(hoverTimeout);
+        tooltip.style.opacity = '0';
+        currentHoverElement = null;
+    });
+});
