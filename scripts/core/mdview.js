@@ -105,157 +105,86 @@ function adjustHeadingLevel(element, currentClass) {
     }
 }
 
+// 定义一个函数，用于应用新的格式化
 function applyNewFormatting(mmd, range, text, parentElement) {
+    // 定义一个对象，用于存储不同的格式化函数
     const formatters = {
+        // 加粗
         bold: () => createStyledElement('span', 'bold', text),
+        // 斜体
         italic: () => createStyledElement('span', 'italic', text),
+        // 链接
         link: () => createStyledElement('span', 'link', text),
+        // 引用
         quote: () => {
+            // 创建一个blockquote元素
             const blockquote = document.createElement('blockquote');
+            // 设置blockquote的文本内容
             blockquote.textContent = text;
+            // 添加灰色文本的样式
             blockquote.classList.add('gray-text');
+            // 返回blockquote元素
             return blockquote;
         },
+        // 标题
         title: () => {
+            // 获取当前元素的标题级别
             const currentLevel = parentElement?.classList?.value.match(/title[1-6]/)?.[0] || 'title0';
+            // 获取下一个标题级别
             const newLevel = getNextHeadingLevel(currentLevel);
+            // 返回一个新的span元素
             return createStyledElement('span', newLevel, text);
         }
     };
 
+    // 根据mmd获取对应的格式化函数，如果没有对应的格式化函数，则返回一个创建文本节点的函数
     const formatter = formatters[mmd] || (() => document.createTextNode(text));
+    // 调用格式化函数，创建一个新的元素
     const newElement = formatter();
 
     range.deleteContents();
     range.insertNode(newElement);
+    // 插入新的元素
 
     const newRange = document.createRange();
+    // 创建一个新的range对象，选中新的元素
     newRange.selectNodeContents(newElement);
     range.setStart(newRange.startContainer, newRange.startOffset);
+    // 设置range的起始位置和结束位置
     range.setEnd(newRange.endContainer, newRange.endOffset);
 
     // 添加视觉反馈（保留）
     newElement.classList.add('format-highlight');
     setTimeout(() => {
+    // 1.2秒后移除视觉反馈
         newElement.classList.remove('format-highlight');
     }, 1200);
 }
 
+// 创建一个带有指定标签名、类名和文本内容的元素
 function createStyledElement(tagName, className, text) {
+    // 创建一个指定标签名的元素
     const element = document.createElement(tagName);
+    // 设置元素的类名
     element.className = className;
+    // 设置元素的文本内容
     element.textContent = text;
+    // 返回创建的元素
     return element;
 }
 
+// 获取下一个标题级别
 function getNextHeadingLevel(currentLevel) {
+    // 定义标题级别数组
     const levels = ['title0', 'title1', 'title2', 'title3', 'title4', 'title5', 'title6'];
+    // 获取当前标题级别在数组中的索引
     let index = levels.indexOf(currentLevel);
+    // 如果当前级别大于等于6，则返回第一个级别，否则如果当前级别小于0，则返回第二个级别，否则返回下一个级别
     index = (index >= 6) ? 0 : (index < 0) ? 1 : index + 1;
+    // 返回下一个级别
     return levels[index];
 }
-
-/* ================ 调试功能区域 ================ */
-function updateFormatDebug(element) {
-    const formatDisplay = document.getElementById('current-format');
-    const pathDisplay = document.getElementById('element-path');
-    
-    if (!formatDisplay || !pathDisplay) return;
-    
-    let path = [];
-    let current = element;
-    while (current && current !== document.body) {
-        path.push(`${current.tagName.toLowerCase()}${current.id ? `#${current.id}` : ''}`);
-        current = current.parentElement;
-    }
-    
-    formatDisplay.textContent = getFormatInfo(element) || '无特殊格式';
-    pathDisplay.textContent = `DOM路径：${path.slice(0, 5).join(' > ')}${path.length > 5 ? '...' : ''}`;
-}
-
-function getFormatInfo(element) {
-    if (!element?.classList) return null;
-    
-    const formatMap = {
-        'bold': '加粗',
-        'italic': '倾斜',
-        'link': '链接',
-        'title1': '标题1',
-        'title2': '标题2',
-        'title3': '标题3',
-        'title4': '标题4',
-        'title5': '标题5',
-        'title6': '标题6',
-        'gray-text': '引用'
-    };
-
-    const matchedClass = Array.from(element.classList).find(c => formatMap[c]);
-    
-    if (!matchedClass) {
-        let current = element.parentElement;
-        for (let i = 0; i < 3 && current; i++) {
-            const parentClass = Array.from(current.classList).find(c => formatMap[c]);
-            if (parentClass) return formatMap[parentClass];
-            current = current.parentElement;
-        }
-    }
-
-    return matchedClass ? formatMap[matchedClass] : null;
-}
-
-function showFormatError(message) {
-    const errorBar = document.createElement('div');
-    errorBar.className = 'format-error';
-    errorBar.textContent = message;
-    errorBar.style = `
-        position: fixed;
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #ff4444;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 4px;
-        z-index: 1000;
-        animation: fadeIn 0.3s;
-    `;
-    
-    document.body.appendChild(errorBar);
-    setTimeout(() => {
-        errorBar.style.animation = 'fadeOut 0.3s';
-        setTimeout(() => errorBar.remove(), 300);
-    }, 2700);
-}
-
-// 在DOMContentLoaded事件监听器中添加
+// 初始化
 document.addEventListener('DOMContentLoaded', () => {
-    const inputBlock = document.getElementById('inputText');
-    const tooltip = document.getElementById('format-tooltip');
-
-    let hoverTimeout;
-    let currentHoverElement;
-
-    inputBlock.addEventListener('mousemove', (e) => {
-        const element = document.elementFromPoint(e.clientX, e.clientY);
-        if (!element || element === currentHoverElement) return;
-
-        currentHoverElement = element;
-        clearTimeout(hoverTimeout);
-        
-        hoverTimeout = setTimeout(() => {
-            const formatInfo = getFormatInfo(element);
-            if (formatInfo) {
-                tooltip.style.left = `${e.pageX + 12}px`;
-                tooltip.style.top = `${e.pageY + 12}px`;
-                tooltip.textContent = formatInfo;
-                tooltip.style.opacity = '1';
-            }
-        }, 100);
-    });
-
-    inputBlock.addEventListener('mouseout', () => {
-        clearTimeout(hoverTimeout);
-        tooltip.style.opacity = '0';
-        currentHoverElement = null;
-    });
+    initFormatTooltip();
 });
