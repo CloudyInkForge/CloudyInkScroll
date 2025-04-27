@@ -186,5 +186,4 @@ function getNextHeadingLevel(currentLevel) {
 }
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
-    initFormatTooltip();
 });
