@@ -46,11 +46,6 @@ body {
     overflow-y: auto;
 }
 
-.format-highlight {
-    animation: format-pulse 1.2s ease-out;
-    background: rgba(100, 200, 255, 0.15);
-}
-
 
 @keyframes format-pulse {
     0% { background: rgba(100, 200, 255, 0.3); }
